@@ -16,7 +16,7 @@ jobs:
 
     strategy:
       matrix:
-        node-version: [14.x, 16.x, 18.x]
+        node-version: [14]
         # See supported Node.js release schedule at https://nodejs.org/en/about/releases/
 
     steps:
@@ -32,12 +32,15 @@ jobs:
     
   first-interaction:
   
-    - name: First interaction
-    uses: actions/first-interaction@v1.1.1
-    with:
-      # Token for the repository. Can be passed in using {{ secrets.GITHUB_TOKEN }}
-      repo-token: 
-      # Comment to post on an individual's first issue
-      issue-message: # optional
-      # Comment to post on an individual's first pull request
-      pr-message: # optional
+    runs-on: ubuntu-latest
+    
+    strategy:
+      matrix:
+        node-version: [14]
+        
+    steps:
+      - uses: actions/first-interaction@v1.1.1
+        with:
+          repo-token: ${{ secrets.GITHUB_TOKEN }}
+          issue-message: "great!"
+          pr-message: 'congrats on your first PR'
