@@ -1,0 +1,17 @@
+name: greet
+
+on: 
+  push:
+    branches:
+      - main
+      
+jobs:
+  say-hello:
+   runs-on: ubuntu-latest
+   steps:
+     - run: echo "hello team!"
+  say-goodbye:
+    runs-on: ubuntu-latest
+    steps:
+       - run: echo "godbye team!!"
+       
